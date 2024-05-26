@@ -1,0 +1,36 @@
+<html>
+<head>
+  <link rel="icon" type="image/png" href="./img/fdxfdxfdx.png"/>
+</head>
+<body>
+  <img src="./img/fdxfdxfdx.png"/>
+  <b>fdxfdxfdx</b>
+  <p>
+    <input id="query" name="query" autofocus placeholder="Enter tracking #.." size="25" type="text" ondblclick="clearQuery()"></input>
+  </p>
+  <p>
+    <a id="searchbtn" onclick="setURL()" target="_blank" href="https://www.fedex.com/wtrk/track/?action=track&trackingnumber=traching+number+here&cntry_code=us&locale=en_us"><input type="button" value="search"/></a>
+  </p>
+</body>
+<script type="text/javascript">
+  function clearQuery() {
+    document.getElementById("query").value = "";
+  }
+  function getQuery() {
+    return document.getElementById("query").value;
+  }
+  function setURL() {
+    var querytext = getQuery();
+    var urlquery = querytext.replace(/ /g, "+");
+    var searchurl = "https://www.fedex.com/wtrk/track/?action=track&trackingnumber=" + urlquery + "&cntry_code=us&locale=en_us";
+    document.getElementById("searchbtn").href = searchurl;
+  }
+  var iquery = document.getElementById("query");
+  iquery.addEventListener("keypress", function(event) {
+    if (event.keyCode == 13) {
+      document.getElementById("searchbtn").click();
+    }
+
+  });
+</script>
+</html>
